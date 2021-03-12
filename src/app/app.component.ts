@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { Path, Text, Group, pdf } from '@progress/kendo-drawing';
-import { saveAs } from '@progress/kendo-file-saver';
-
-const { exportPDF } = pdf;
 
 @Component({
   selector: 'app-root',
@@ -29,81 +25,34 @@ export class AppComponent {
 
       this.data = XLSX.utils.sheet_to_json(ws, { header: 1 });
       console.log(this.data);
+
       document.getElementById('name').textContent = this.data[0][0];
       document.getElementById('sId').textContent = this.data[0][1];
       document.getElementById('address').textContent = this.data[0][2];
       document.getElementById('DOB').textContent = this.data[0][3];
       document.getElementById('validity').textContent = this.data[0][4];
-      //document.getElementById('clickMe').click();
     };
     reader.readAsBinaryString(target.files[0]);
   }
 
-  // bulk() {
-  //   let img;
-  //   let name;
-  //   let sId;
-  //   let address;
-  //   let DOB;
-  //   let validity;
-  //   console.log(this.data);
-
-  //   for (let i = 0; i <= this.data.length; i++) {
-  //     name = this.data[i][0];
-  //     sId = this.data[i][1];
-  //     address = this.data[i][2];
-  //     DOB = this.data[i][3];
-  //     validity = this.data[i][4];
-
-  //     document.getElementById('name').textContent = name;
-  //     document.getElementById('sId').textContent = sId;
-  //     document.getElementById('address').textContent = address;
-  //     document.getElementById('DOB').textContent = DOB;
-  //     document.getElementById('validity').textContent = validity;
-  //     // document.getElementById('clickMe').click();
-  //   }
-  // }
-
   exports() {
-    let img;
-    let name;
-    let sId;
-    let address;
-    let DOB;
-    let validity;
-    console.log(this.data);
+    let j = 0;
 
-    for (let i = 0; i <= this.data.length - 1; i++) {
-      name = this.data[i][0];
-      sId = this.data[i][1];
-      address = this.data[i][2];
-      DOB = this.data[i][3];
-      validity = this.data[i][4];
-      console.log(name);
-      document.getElementById('name').textContent = name;
-      document.getElementById('sId').textContent = sId;
-      document.getElementById('address').textContent = address;
-      document.getElementById('DOB').textContent = DOB;
-      document.getElementById('validity').textContent = validity;
-      document.getElementById('clickMe').click();
+    function a(data) {
+      if (j < data.length) {
+        setTimeout(() => {
+          console.log(data[j][0]);
+          document.getElementById('name').textContent = data[j][0];
+          document.getElementById('sId').textContent = data[j][1];
+          document.getElementById('address').textContent = data[j][2];
+          document.getElementById('DOB').textContent = data[j][3];
+          document.getElementById('validity').textContent = data[j][4];
+          document.getElementById('clickMe').click();
+          j++;
+          a(data);
+        }, 500);
+      }
     }
+    a(this.data);
   }
 }
-// bulk() {
-//   ; i <= this.data.length - 1; i++) {
-//     name = this.data[i][0];
-//     sId = this.data[i][1];
-//     address = this.data[i][2];
-//     DOB = this.data[i][3];
-//     validity = this.data[i][4];
-
-//     console.log(name, sId, address, DOB, validity);
-
-//     // document.getElementById('name').textContent = name;
-//     // document.getElementById('sId').textContent = sId;
-//     // document.getElementById('address').textContent = address;
-//     // document.getElementById('DOB').textContent = DOB;
-//     // document.getElementById('validity').textContent = validity;
-//     document.getElementById('clickMe').click();
-//   }
-// }

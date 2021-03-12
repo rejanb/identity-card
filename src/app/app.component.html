@@ -1,55 +1,55 @@
 <p>Choose a file to load</p>
 
 <input type="file" (change)="onFileChange($event)" />
-<button (click)="exports()">Save As PDF...</button>
-<button
-  id="clickMe"
-  class="k-button"
-  (click)="pdf.saveAs('document.pdf')"
-  style="visibility: hidden"
->
-  Save As PDF...
-</button>
-<kendo-pdf-export #pdf paperSize="A4" margin="2cm">
-  <div class="container">
-    <div class="padding">
-      <div class="font">
-        <div class="top">
-          <p
-            style="
-              padding-left: 10px;
-              font-weight: bold;
-              text-align: center;
-              font-size: 14px;
-              padding-top: 10px;
-            "
-          >
-            ITAHARI INTERNATIONAL COLLEGE
-          </p>
-          <img src="assets/download.jfif" alt="image" />
-        </div>
-        <div class="bottom">
-          <p id="name">Student Name</p>
-          <table>
-            <tr>
-              <td><strong>Student Id</strong></td>
-              <td id="sId">1702</td>
-            </tr>
-            <tr>
-              <td><strong>Adress</strong></td>
-              <td id="address">Itahari-07</td>
-            </tr>
-            <tr>
-              <td><strong>D.O.B</strong></td>
-              <td id="DOB">25-Dec, 1997</td>
-            </tr>
-            <tr>
-              <td><strong>Validity </strong></td>
-              <td id="validity">Feb-2,2022</td>
-            </tr>
-          </table>
+<button (click)="exports()">Export as PDF</button>
+<div id="card">
+  <button
+    id="clickMe"
+    class="k-button"
+    (click)="pdf.saveAs('Identity-Card.pdf')"
+    style="visibility: hidden"
+  ></button>
+  <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+    <div class="container">
+      <div class="padding">
+        <div class="font">
+          <div class="top">
+            <p
+              style="
+                padding-left: 10px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 14px;
+                padding-top: 10px;
+              "
+            >
+              ITAHARI INTERNATIONAL COLLEGE
+            </p>
+            <img src="assets/download.jfif" alt="image" />
+          </div>
+          <div class="bottom">
+            <p id="name">Student Name</p>
+            <table>
+              <tr>
+                <td><strong>Student Id</strong></td>
+                <td id="sId">1702</td>
+              </tr>
+              <tr>
+                <td><strong>Adress</strong></td>
+                <td id="address">Itahari-07</td>
+              </tr>
+              <tr>
+                <td><strong>D.O.B</strong></td>
+                <td id="DOB">25-Dec, 1997</td>
+              </tr>
+              <tr>
+                <td><strong>Validity </strong></td>
+                <td id="validity">Feb-2,2022</td>
+              </tr>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</kendo-pdf-export>
+  </kendo-pdf-export>
+</div>
